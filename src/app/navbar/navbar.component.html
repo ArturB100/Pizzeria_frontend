@@ -2,11 +2,14 @@
     <a routerLink="/">Strong główna</a>
     <div *ngIf="isLoggedIn$ | async">
         <div>Witaj {{username$ | async}}</div>
+        <div><a routerLink="/userData" routerLinkActive="active-link">Moje dane</a></div>
         <div>
             <button (click)="logOut()">Wyloguj</button>
         </div>
     </div>
     <div *ngIf="!(isLoggedIn$ | async)">
         <a routerLink="/login">Logowanie</a>
+        <a routerLink="/registration">Rejestracja</a>
     </div>
+    
 </div>

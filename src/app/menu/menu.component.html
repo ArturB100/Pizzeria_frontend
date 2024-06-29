@@ -1,0 +1,5 @@
+<ul>
+    <li *ngFor="let pizza of pizzas">
+        <app-pizza-list-item [pizza]="pizza" (click)="navigateToPizzaDetails(pizza.id)"></app-pizza-list-item>
+    </li>
+</ul>
