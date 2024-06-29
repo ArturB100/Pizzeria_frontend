@@ -37,7 +37,7 @@ export class AxiosService {
   }
 
   public async postReq <T>(path: string, body?: {}) : Promise<T> {
-    return await this.axios().get(path, body)
+    return await this.axios().post(path, body)
       .then(res => this.responseFunc(res))
       .catch(err => this.errorFunc(err))
       
@@ -57,6 +57,9 @@ export class AxiosService {
       if (err.response.status === 401) {
         localStorage.removeItem('token');
         this.store.dispatch(logOut());
+      }
+      if (err.response.data) {
+        return err.response.data
       }
     }
   }

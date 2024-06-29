@@ -21,3 +21,13 @@ export interface UserData {
     zipcode: string
   }
   
+
+  export interface RegisterReqBody {
+    firstName: string
+    lastName: string
+    phone: string
+    email: string
+    password: string
+    passwordConfirm: string
+  }
+  

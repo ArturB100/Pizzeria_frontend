@@ -1,1 +1,55 @@
-<p>registration works!</p>
+<div>
+    <form (ngSubmit)="onSubmit()">
+
+        <app-custom-input 
+            [errorMsg]="formErrors.email" 
+            name="email"
+            [value]="formBody.email"
+            placeholder="Podaj email"
+            (valueChange)="onEmailChange($event)"
+        ></app-custom-input>
+
+        <app-custom-input 
+            [errorMsg]="formErrors.firstName" 
+            name="firstName"
+            [value]="formBody.firstName"
+            placeholder="Podaj Imię"
+            (valueChange)="onFirstNameChange($event)"
+        ></app-custom-input>
+
+        <app-custom-input 
+            [errorMsg]="formErrors.lastName" 
+            name="lastName"
+            [value]="formBody.lastName"
+            placeholder="Podaj nazwisko"
+            (valueChange)="onLastNameChange($event)"
+        ></app-custom-input>
+
+
+        <app-custom-input 
+            [errorMsg]="formErrors.phone" 
+            name="phone"
+            [value]="formBody.phone"
+            placeholder="Podaj telefon"
+            (valueChange)="onPhoneChange($event)"
+        ></app-custom-input>
+
+        <app-custom-input 
+            [errorMsg]="formErrors.password" 
+            name="password"
+            [value]="formBody.password"
+            placeholder="Podaj hasło"
+            (valueChange)="onPasswordChange($event)"
+        ></app-custom-input>
+
+        <app-custom-input 
+            [errorMsg]="formErrors.passwordConfirm" 
+            name="passwordConfirm"
+            [value]="formBody.passwordConfirm"
+            placeholder="Potwierdź hasło"
+            (valueChange)="onPasswordConfirmChange($event)"
+        ></app-custom-input>
+
+        <button type="submit">Zarejestruj</button>
+    </form>
+</div>

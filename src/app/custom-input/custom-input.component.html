@@ -1,0 +1,13 @@
+<div class="container">
+    <input 
+        [(ngModel)]="value"
+        [name]="name"
+        [placeholder]="placeholder"
+        (input)="onValueChange($event)"
+        />
+    <div *ngIf="errorMsg !== ''" class="error-container">
+        {{errorMsg}}
+    </div>
+</div>
+
+
