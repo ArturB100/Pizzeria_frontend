@@ -1,0 +1,12 @@
+<div>
+    <a routerLink="/">Strong główna</a>
+    <div *ngIf="isLoggedIn$ | async">
+        <div>Witaj {{username$ | async}}</div>
+        <div>
+            <button (click)="logOut()">Wyloguj</button>
+        </div>
+    </div>
+    <div *ngIf="!(isLoggedIn$ | async)">
+        <a routerLink="/login">Logowanie</a>
+    </div>
+</div>

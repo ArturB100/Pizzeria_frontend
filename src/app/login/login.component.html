@@ -1,0 +1,12 @@
+
+<div class="form-container">
+    <form (ngSubmit)="onSubmit()">
+        <input [(ngModel)]="formData.email" name="email" placeholder="email"/> 
+        <input [(ngModel)]="formData.password" name="password" placeholder="hasło" type="password"/> 
+        <button  type="submit">
+            zaloguj
+        </button>
+    </form>
+</div>
+
+
