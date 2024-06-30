@@ -1,5 +1,22 @@
-<ul>
-    <li *ngFor="let pizza of pizzas">
+<a routerLink="/">powrót</a>
+
+<div class=" pizzas-container">
+    <div *ngFor="let pizza of pizzas">
         <app-pizza-list-item [pizza]="pizza" (click)="navigateToPizzaDetails(pizza.id)"></app-pizza-list-item>
-    </li>
-</ul>
+    </div>
+</div>
+
+<div class="container">
+    <button 
+        [disabled]="this.page === 0" 
+        (click)="this.decreasePage()"> &lt;</button>
+
+    <button 
+        [disabled]="this.pizzas.length < 10" 
+        (click)="this.increasePage()"
+        >&gt;</button>
+
+    <button
+        (click)="resetPage()"
+        >Reset</button>
+</div>

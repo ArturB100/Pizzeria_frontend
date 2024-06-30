@@ -43,6 +43,13 @@ export class AxiosService {
       
   }
 
+  public async putReq <T>(path: string, body?: {}) : Promise<T> {
+    return await this.axios().put(path, body)
+      .then(res => this.responseFunc(res))
+      .catch(err => this.errorFunc(err))
+      
+  }
+
   private responseFunc (res : AxiosResponse<any, any>) {
     if (res.status === 200 || res.status === 201) {
       return res.data 

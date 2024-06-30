@@ -3,30 +3,36 @@ import { PizzaService } from '../services/pizza.service';
 import { Pizza } from '../types/menu';
 import { CommonModule } from '@angular/common';
 import { PizzaListItemComponent } from '../pizza-list-item/pizza-list-item.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
   imports: [
     CommonModule,
-    PizzaListItemComponent
+    PizzaListItemComponent,
+    RouterModule
   ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })
 export class MenuComponent implements OnInit{
   
-  private page: number = 0;
+  protected page: number = 0;
   protected pizzas: Array<Pizza> = []
 
   constructor(
     private menuSerive: PizzaService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute    
   ){}
 
   ngOnInit(): void {
-    this.fetchPizzas();
+    this.route.queryParams.subscribe(params => {
+      this.page = params['page'] | 0;
+      this.fetchPizzas();
+    })
+    //this.fetchPizzas();
   }
 
 
@@ -39,6 +45,32 @@ export class MenuComponent implements OnInit{
 
   navigateToPizzaDetails (id: number) {
     this.router.navigate([`/pizzaDetails/${id}`]);
+  }
+
+  increasePage () {
+    //this.page += 1;
+    //this.router.navigate(['/menu?page=' + this.page + 1])
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { page: this.page + 1 },
+      queryParamsHandling: 'merge' // preserve other existing query params
+    });
+  }
+
+  decreasePage () {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { page: this.page - 1 },
+      queryParamsHandling: 'merge' // preserve other existing query params
+    });
+  }
+
+  resetPage () {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { page: 0 },
+      queryParamsHandling: 'merge' // preserve other existing query params
+    });
   }
 
 }

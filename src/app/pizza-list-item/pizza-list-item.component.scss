@@ -1,0 +1,9 @@
+.pizza-container {
+    transition: transform .3s;
+    width: 100%;
+    cursor: pointer;
+}   
+
+.pizza-container:hover {
+    transform: scale(1.05);
+}

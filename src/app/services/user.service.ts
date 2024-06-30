@@ -4,7 +4,7 @@ import {  AxiosService } from './axios.service';
 import { Store } from '@ngrx/store';
 import { User } from '../store/reducers';
 import { logIn, logOut } from '../store/action';
-import { RegisterReqBody as RegisterReqBody, UserData, UserLoginPayload } from '../types/user';
+import { NewAddressDto, RegisterReqBody as RegisterReqBody, UpdateUserDataDto, UserData, UserLoginPayload } from '../types/user';
 import { OperationResults } from '../types/common';
 import { ToastrService } from 'ngx-toastr';
 
@@ -12,7 +12,9 @@ import { ToastrService } from 'ngx-toastr';
 const routes = {
   login: '/auth/login',
   userData: '/user',
-  register: '/user'
+  register: '/user',
+  updateUserData: '/user',
+  updateUserAddress: '/user/assignAddress'
 }
 
 @Injectable({
@@ -70,6 +72,13 @@ export class UserService {
       
   }
 
+  async updateUserData (body: UpdateUserDataDto) {
+    return this.axiosService.putReq<OperationResults>(routes.updateUserData, body);
+  }
+
+  async updateUserAddress (body: NewAddressDto) {
+    return this.axiosService.postReq<OperationResults>(routes.updateUserAddress, body);
+  }
 
 }
 

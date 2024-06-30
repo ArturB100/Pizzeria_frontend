@@ -1,8 +1,8 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { AppState } from "./AppState";
-import { User } from "./reducers";
+import { Order, User } from "./reducers";
 
-export const selectUser = createFeatureSelector<AppState, User>('user');
+export const selectUser = createFeatureSelector<User>('user');
 
 export const selectUserName = createSelector(
   selectUser,
@@ -13,4 +13,11 @@ export const selectUserName = createSelector(
 export const selectIsLoggedIn = createSelector(
   selectUser,
   (user: User) => user.loggedIn
+)
+
+
+export const selectOrder = createFeatureSelector<Order>('order');
+export const selectPizzas = createSelector(
+  selectOrder,
+  (order: Order) => order.pizzas
 )

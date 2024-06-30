@@ -1,4 +1,41 @@
-<p>user-data works!</p>
+
+<h1>Moje dane</h1>
+
+<form 
+    (ngSubmit)="onUserDataFormSubmit()" 
+    *ngIf="userData"
+    class=""
+    >
+        <label for="email" class="form-label">email</label>
+        <input [(ngModel)]="userData.email" placeholder="email"  name="email" class="form-control" disabled="true"/>
+
+        <label for="firstName" class="form-label">Imię</label>
+        <input [(ngModel)]="userData.firstName" placeholder="imię"  name="firstName" class="form-control"/>
+
+        <label for="lastName" class="form-label">nazwisko</label>
+        <input [(ngModel)]="userData.lastName" placeholder="nazwisko" name="lastName"  class="form-control"/>
+
+        <label for="phone" class="form-label">telefon</label>
+        <input [(ngModel)]="userData.phone" placeholder="telefon" name="phone" class="form-control"/>
+
+        <button type="submit">Aktualizuj</button>
+</form>
 
 
-<p>{{userData?.email}}</p>
+<form (ngSubmit)="onAddressFormSubmit()" *ngIf="userData">
+    <label for="city" class="form-label">Miasto</label>
+    <input [(ngModel)]="userData.address.city" placeholder="miasto"  name="city"  class="form-control"/>
+
+    <label for="zipcode" class="form-label">Kod poczotwy</label>
+    <input [(ngModel)]="userData.address.zipcode" placeholder="kod pocztowy"  name="zipcode"  class="form-control"/>
+
+    <label for="firstLine" class="form-label">pierwsza linia</label>
+    <input [(ngModel)]="userData.address.firstLine" placeholder="adres 1"  name="firstLine"  class="form-control"/>
+
+    <label for="secondLine" class="form-label">druga linia</label>
+    <input [(ngModel)]="userData.address.secondLine" placeholder="adres 2"  name="secondLine"  class="form-control"/>
+
+    <button type="submit">Aktualizuj</button>
+</form>
+
+

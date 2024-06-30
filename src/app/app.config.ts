@@ -3,14 +3,14 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { ActionReducer, MetaReducer, provideStore } from '@ngrx/store';
-import { userReducer } from './store/reducers';
+import { orderReducer, userReducer } from './store/reducers';
 import { CommonModule } from '@angular/common';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
-  return localStorageSync({ keys: ['user'], rehydrate: true })(reducer);
+  return localStorageSync({ keys: ['user', 'order'], rehydrate: true })(reducer);
 }
 
 const metaReducers: MetaReducer<any>[] = [localStorageSyncReducer];
@@ -20,7 +20,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes),
-    provideStore({ user: userReducer }, { metaReducers }),
+    provideStore({ user: userReducer, order: orderReducer }, { metaReducers }),
     CommonModule,
     importProvidersFrom(
       BrowserAnimationsModule, // Required for toastr animations
@@ -30,6 +30,7 @@ export const appConfig: ApplicationConfig = {
         progressBar: true, // Adding a progress bar
         timeOut: 5000, // Setting timeout duration
         preventDuplicates: true, // Preventing duplicate toasts
+        
       })   // ToastrModule configuration
     )
   ]  

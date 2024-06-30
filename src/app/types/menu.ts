@@ -15,4 +15,9 @@ export interface Pizza {
     priceForMedium: number
     priceForBig: number
   }
+
+
+  export enum PizzaSizeEnum{
+    SMALL, MEDIUM, BIG
+  }
   

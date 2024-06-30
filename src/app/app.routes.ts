@@ -5,6 +5,7 @@ import { UserDataComponent } from './user-data/user-data.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { MenuComponent } from './menu/menu.component';
 import { PizzaDetailsComponent } from './pizza-details/pizza-details.component';
+import { OrderComponent } from './order/order.component';
 
 
 export const routes: Routes = [
@@ -14,4 +15,5 @@ export const routes: Routes = [
     {path: "registration", component: RegistrationComponent},
     {path: "menu", component: MenuComponent},
     {path: "pizzaDetails/:id", component: PizzaDetailsComponent},
+    {path: "order", component: OrderComponent},
 ];

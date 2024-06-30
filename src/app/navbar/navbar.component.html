@@ -1,13 +1,15 @@
-<div>
+<div class="navbar">
     <a routerLink="/">Strong główna</a>
-    <div *ngIf="isLoggedIn$ | async">
+    <div *ngIf="isLoggedIn$ | async" class="loggedUserPanel">
         <div>Witaj {{username$ | async}}</div>
         <div><a routerLink="/userData" routerLinkActive="active-link">Moje dane</a></div>
+        <div><a routerLink="/order" routerLinkActive="active-link">Zamówienie</a></div>
         <div>
             <button (click)="logOut()">Wyloguj</button>
         </div>
     </div>
-    <div *ngIf="!(isLoggedIn$ | async)">
+
+    <div *ngIf="!(isLoggedIn$ | async)" class="unloggedUserPanel">
         <a routerLink="/login">Logowanie</a>
         <a routerLink="/registration">Rejestracja</a>
     </div>

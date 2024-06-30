@@ -1,0 +1,16 @@
+<div *ngFor="let pizza of (pizzas$ | async)">
+    <div>
+        <app-pizza-list-item [pizza]="pizza.pizza">
+
+        </app-pizza-list-item>
+        <div>ilość {{pizza.quantity}}</div>    
+    </div>
+</div>
+
+<button (click)="clearAllItemsFromOrder()">
+    Wyszyść całą listę
+</button>
+
+<div *ngIf="(pizzas$ | async)?.length == 0">
+    Nie masz nic w zamówieniu
+</div>

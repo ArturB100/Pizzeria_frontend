@@ -31,3 +31,18 @@ export interface UserData {
     passwordConfirm: string
   }
   
+
+export interface UpdateUserDataDto {
+    firstName: string
+    lastName: string
+    phone: string
+  }
+  
+
+  export interface NewAddressDto {
+    firstLine: string
+    secondLine: string
+    zipcode: string
+    city: string
+  }
+  

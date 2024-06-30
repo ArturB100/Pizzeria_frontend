@@ -1,0 +1,23 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+    background-color: rgba(28, 162, 28, 0.674);
+}
+
+@mixin userPanelStyles {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.loggedUserPanel {
+    @include userPanelStyles;
+}
+
+
+.unloggedUserPanel {
+    @include userPanelStyles;
+}

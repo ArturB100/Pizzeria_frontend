@@ -2,6 +2,10 @@
 /* styles.css or styles.scss */
 //@import '~ngx-toastr/toastr.css';
 
+// regular style toast
+@import 'ngx-toastr/toastr';
+
+
 .toast-success {
   background-color: #28a745 !important;
   color: white !important;
@@ -20,4 +24,9 @@
 .toast-info {
   background-color: #17a2b8 !important;
   color: white !important;
+}
+
+
+* {
+  box-sizing: border-box;
 }
