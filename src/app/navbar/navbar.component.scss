@@ -1,10 +1,14 @@
+.navbar-wrapper {
+    background-color: white;
+}
+
 .navbar {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 50px;
     align-items: center;
-    background-color: rgba(28, 162, 28, 0.674);
+    background-color: rgba(28, 162, 28, 0.68);
 }
 
 @mixin userPanelStyles {

@@ -3,6 +3,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './store/reducers';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { NavbarComponent } from './navbar/navbar.component';
   imports: [
     RouterOutlet,
     RouterModule,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

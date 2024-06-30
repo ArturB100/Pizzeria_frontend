@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Host, HostBinding, Input } from '@angular/core';
 import { Pizza } from '../types/menu';
 
 @Component({
@@ -9,6 +9,7 @@ import { Pizza } from '../types/menu';
   styleUrl: './pizza-list-item.component.scss'
 })
 export class PizzaListItemComponent {
+  @HostBinding('style.padding') padding: string = '0px';
   @Input({required: true}) public pizza!: Pizza
   constructor(){}
 

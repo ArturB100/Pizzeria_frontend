@@ -1,7 +1,12 @@
 .main-content {
     max-width: 100%;
     min-height: 80vh;
-    margin: 0px 20% 0px 20%;
+    margin: 0px 15% 0px 15%;
     padding: 10px;
     box-sizing: border-box;
+    z-index: 3;
+    background-color: white;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
+

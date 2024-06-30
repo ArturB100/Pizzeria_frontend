@@ -30,3 +30,28 @@
 * {
   box-sizing: border-box;
 }
+
+
+body {
+  background-image: url('/background2.jpg');
+  background-size: contain;
+  background-position: center; 
+  background-repeat: repeat-x;
+  height: 100vh;
+  position: relative; 
+  animation: background-animation 300s ease normal infinite;
+  animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+
+
+@keyframes background-animation {
+  0% {
+    background-position-x: center;
+  }
+  50% {
+    background-position-x: -1000px;
+  }
+  100% {
+    background-position-x: center;
+  }
+}

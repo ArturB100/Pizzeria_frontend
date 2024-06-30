@@ -2,8 +2,52 @@
     transition: transform .3s;
     width: 100%;
     cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }   
 
 .pizza-container:hover {
     transform: scale(1.05);
 }
+
+img.pizza-img {
+    // max-width: 200px;
+    // max-height: 200px;
+    // border-radius: 40px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.pizza-name {
+    position: absolute;
+    background-color: whitesmoke;
+    font-size: 30px;
+    z-index: 100;
+}
+
+.pizza-desc {
+    position: absolute;
+    z-index: 100;
+
+    top: 10%;
+    opacity: 0;
+    transition: opacity 1s;
+    padding: 100px;
+    border-radius: 30px;
+    font-size: large;
+    font-weight: 700;
+
+    background: rgb(23,100,34);
+    background: -moz-radial-gradient(circle, rgba(23,100,34,0.2413340336134454) 7%, rgba(54,199,31,1) 45%, rgba(0,255,175,0.258140756302521) 84%, rgba(2,0,36,0.14889705882352944) 100%);
+    background: -webkit-radial-gradient(circle, rgba(23,100,34,0.2413340336134454) 7%, rgba(54,199,31,1) 45%, rgba(0,255,175,0.258140756302521) 84%, rgba(2,0,36,0.14889705882352944) 100%);
+    background: radial-gradient(circle, rgba(23,100,34,0.2413340336134454) 7%, rgba(54,199,31,1) 45%, rgba(0,255,175,0.258140756302521) 84%, rgba(2,0,36,0.14889705882352944) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#176422",endColorstr="#020024",GradientType=1);
+}
+
+.pizza-container:hover .pizza-desc{
+    opacity: 1;
+}
+
