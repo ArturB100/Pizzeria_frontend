@@ -6,18 +6,20 @@ import { Pizza, PizzaSizeEnum } from '../types/menu';
 // User
 export interface User  {
     name: string,
-    loggedIn: boolean
+    loggedIn: boolean,
+    userRole: number
 }
 
 const initialState : User = {
     name: '',
-    loggedIn: false
+    loggedIn: false,
+    userRole: 0
 }
 
 export const _userReducer = createReducer(
     initialState,
-    on(logIn, (state, {name}) => ({...state, name: name, loggedIn: true})),
-    on(logOut, (state) => ({name: '', loggedIn: false}))
+    on(logIn, (state, {name, userRole}) => ({...state, name: name, loggedIn: true, userRole: userRole})),
+    on(logOut, (state) => ({name: '', loggedIn: false, userRole: 0}))
 )
 
 export function userReducer(state: any, action: any) {
