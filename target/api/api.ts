@@ -1,0 +1,11 @@
+export * from './ingredient.service';
+import { IngredientService } from './ingredient.service';
+export * from './jWTauth.service';
+import { JWTauthService } from './jWTauth.service';
+export * from './order.service';
+import { OrderService } from './order.service';
+export * from './pizza.service';
+import { PizzaService } from './pizza.service';
+export * from './user.service';
+import { UserService } from './user.service';
+export const APIS = [IngredientService, JWTauthService, OrderService, PizzaService, UserService];
