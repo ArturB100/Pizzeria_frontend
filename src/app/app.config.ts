@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {provideHttpClient} from "@angular/common/http";
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: ['user', 'order'], rehydrate: true })(reducer);
@@ -21,7 +22,8 @@ export const AppSettings = {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideHttpClient(),
+    provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideStore({ user: userReducer, order: orderReducer }, { metaReducers }),
     CommonModule,
@@ -33,8 +35,8 @@ export const appConfig: ApplicationConfig = {
         progressBar: true, // Adding a progress bar
         timeOut: 5000, // Setting timeout duration
         preventDuplicates: true, // Preventing duplicate toasts
-        
+
       })   // ToastrModule configuration
     )
-  ]  
+  ]
 };

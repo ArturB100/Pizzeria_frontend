@@ -1,0 +1,630 @@
+openapi: 3.0.1
+info:
+  title: Pizzeria
+  version: '1.0'
+servers:
+  - url: http://localhost:25585
+    description: Generated server url
+paths:
+  /ingredient:
+    get:
+      tags:
+        - Ingredient
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ingredient'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ingredient'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ingredient'
+    post:
+      tags:
+        - Ingredient
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddIngredientRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AddIngredientRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AddIngredientRequest'
+      responses:
+        '200':
+          description: Success
+  /ingredient/{id}:
+    get:
+      tags:
+        - Ingredient
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  /auth/login:
+    post:
+      tags:
+        - JWTauth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/LoginDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/LoginDto'
+      responses:
+        '200':
+          description: Success
+  /auth/testGetId:
+    get:
+      tags:
+        - JWTauth
+      responses:
+        '200':
+          description: Success
+  /order:
+    get:
+      tags:
+        - Order
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PizzaOrder'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PizzaOrder'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PizzaOrder'
+    post:
+      tags:
+        - Order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddOrderRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AddOrderRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AddOrderRequest'
+      responses:
+        '200':
+          description: Success
+  /pizza:
+    get:
+      tags:
+        - Pizza
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PizzaDto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PizzaDto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PizzaDto'
+    post:
+      tags:
+        - Pizza
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddPizzaRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AddPizzaRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AddPizzaRequest'
+      responses:
+        '200':
+          description: Success
+  /pizza/{id}:
+    get:
+      tags:
+        - Pizza
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  /user/allUsers:
+    get:
+      tags:
+        - User
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  /user:
+    get:
+      tags:
+        - User
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/UserShowDataDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserShowDataDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UserShowDataDto'
+    post:
+      tags:
+        - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewUserDtoReq'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/NewUserDtoReq'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/NewUserDtoReq'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OperationResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResult'
+    put:
+      tags:
+        - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserDataDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserDataDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserDataDto'
+      responses:
+        '200':
+          description: Success
+  /user/assignAddress:
+    post:
+      tags:
+        - User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewAddressDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/NewAddressDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/NewAddressDto'
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    AddIngredientRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        priceForSmall:
+          type: number
+          format: double
+        priceForMedium:
+          type: number
+          format: double
+        priceForBig:
+          type: number
+          format: double
+      additionalProperties: false
+    AddOrderDetailsRequest:
+      type: object
+      properties:
+        pizzaId:
+          type: integer
+          format: int32
+        quantity:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+      additionalProperties: false
+    AddOrderRequest:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int32
+        addressId:
+          type: integer
+          format: int32
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddOrderDetailsRequest'
+          nullable: true
+      additionalProperties: false
+    AddPizzaRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        ingredients:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+      additionalProperties: false
+    Address:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        firstLine:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        secondLine:
+          type: string
+          nullable: true
+        zipcode:
+          type: string
+          nullable: true
+      additionalProperties: false
+    FieldError:
+      type: object
+      properties:
+        fieldKey:
+          type: string
+          nullable: true
+        errorMsg:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Ingredient:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        priceForSmall:
+          type: number
+          format: double
+        priceForMedium:
+          type: number
+          format: double
+        priceForBig:
+          type: number
+          format: double
+      additionalProperties: false
+    LoginDto:
+      type: object
+      properties:
+        email:
+          type: string
+          nullable: true
+        password:
+          type: string
+          nullable: true
+      additionalProperties: false
+    NewAddressDto:
+      type: object
+      properties:
+        firstLine:
+          type: string
+          nullable: true
+        secondLine:
+          type: string
+          nullable: true
+        zipcode:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+      additionalProperties: false
+    NewUserDtoReq:
+      type: object
+      properties:
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        password:
+          type: string
+          nullable: true
+        passwordConfirm:
+          type: string
+          nullable: true
+      additionalProperties: false
+    OperationResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldError'
+          nullable: true
+      additionalProperties: false
+    OrderDetails:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        pizza:
+          $ref: '#/components/schemas/Pizza'
+        quantity:
+          type: integer
+          format: int32
+        size:
+          $ref: '#/components/schemas/SizeEnum'
+      additionalProperties: false
+    OrderStatusEnum:
+      enum:
+        - 0
+        - 1
+        - 2
+      type: integer
+      format: int32
+    Pizza:
+      required:
+        - id
+        - ingredients
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          minLength: 1
+          type: string
+        createdByUser:
+          type: boolean
+        ingredients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ingredient'
+      additionalProperties: false
+    PizzaDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        createByUser:
+          type: boolean
+        ingredients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ingredient'
+          nullable: true
+        totalPriceForSmall:
+          type: number
+          format: double
+        totalPriceForMedium:
+          type: number
+          format: double
+        totalPriceForBig:
+          type: number
+          format: double
+      additionalProperties: false
+    PizzaOrder:
+      required:
+        - address
+        - id
+        - orderDetails
+        - status
+        - user
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        user:
+          $ref: '#/components/schemas/User'
+        address:
+          $ref: '#/components/schemas/Address'
+        totalPrice:
+          type: number
+          format: double
+        status:
+          $ref: '#/components/schemas/OrderStatusEnum'
+        orderDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderDetails'
+      additionalProperties: false
+    RoleEnum:
+      enum:
+        - 0
+        - 1
+      type: integer
+      format: int32
+    SizeEnum:
+      enum:
+        - 0
+        - 1
+        - 2
+      type: integer
+      format: int32
+    UpdateUserDataDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+      additionalProperties: false
+    User:
+      required:
+        - email
+        - firstName
+        - id
+        - lastName
+        - password
+        - role
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        firstName:
+          maxLength: 50
+          minLength: 0
+          type: string
+        lastName:
+          maxLength: 50
+          minLength: 0
+          type: string
+        email:
+          minLength: 1
+          type: string
+          format: email
+        phone:
+          type: string
+          format: tel
+          nullable: true
+        password:
+          maxLength: 100
+          minLength: 0
+          type: string
+        role:
+          $ref: '#/components/schemas/RoleEnum'
+        address:
+          $ref: '#/components/schemas/Address'
+      additionalProperties: false
+    UserShowDataDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        address:
+          $ref: '#/components/schemas/Address'
+      additionalProperties: false

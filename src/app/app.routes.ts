@@ -6,6 +6,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { MenuComponent } from './menu/menu.component';
 import { PizzaDetailsComponent } from './pizza-details/pizza-details.component';
 import { OrderComponent } from './order/order.component';
+import { AddPizzaComponent } from './add-pizza/add-pizza.component';
+import { AddIngredientComponent } from './add-ingredient/add-ingredient.component';
 import { MakeOrderComponent } from './make-order/make-order.component';
 import { OrdersHistoryComponent } from './orders-history/orders-history.component';
 
@@ -20,4 +22,6 @@ export const routes: Routes = [
     {path: "order", component: OrderComponent},
     {path: "makeOrder", component: MakeOrderComponent},
     {path: "ordersHistory", component: OrdersHistoryComponent},
+    {path: "add-pizza", component: AddPizzaComponent},
+    {path: "add-ingredient", component: AddIngredientComponent}
 ];
