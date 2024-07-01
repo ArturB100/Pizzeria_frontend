@@ -39,6 +39,7 @@
             name="password"
             [value]="formBody.password"
             placeholder="Podaj hasło"
+            type="password"
             (valueChange)="onPasswordChange($event)"
         ></app-custom-input>
 
@@ -47,6 +48,7 @@
             name="passwordConfirm"
             [value]="formBody.passwordConfirm"
             placeholder="Potwierdź hasło"
+            type="password"
             (valueChange)="onPasswordConfirmChange($event)"
         ></app-custom-input>
 

@@ -63,14 +63,17 @@ export class RegistrationComponent{
         const errors = data.errors
         for (const error of errors) {
           switch(error.fieldKey) {
-            case 'email': 
+            case 'Email': 
                 this.formErrors.email = error.errorMsg;
               break;
-            case 'password': 
+            case 'Password': 
               this.formErrors.password = error.errorMsg;
               break;
-            case 'passwordConfirm':
+            case 'PasswordConfirm':
               this.formErrors.passwordConfirm = error.errorMsg;
+              break;
+            case 'Phone':
+              this.formErrors.phone = error.errorMsg;
               break;
           }
         }

@@ -1,7 +1,9 @@
 <div class="navbar-wrapper">
     <div class="navbar">
         <button (click)="toggleBackgroundImageVisibility()">Tło</button>
-        <a routerLink="/">Strong główna</a>
+        <a routerLink="/">Strona główna</a>
+        <a routerLink="/menu" routerLinkActive="active-link">Menu</a>
+
 
         <div *ngIf="isLoggedIn$ | async" class="loggedUserPanel">
             <div *ngIf="checkIfAdmin()"><a routerLink="/add-pizza" routerLinkActive="active-link">Dodaj pizze</a></div>

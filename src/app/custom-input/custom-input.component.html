@@ -4,6 +4,7 @@
         [name]="name"
         [placeholder]="placeholder"
         (input)="onValueChange($event)"
+        [type]="type || 'text'"
         />
     <div *ngIf="errorMsg !== ''" class="error-container">
         {{errorMsg}}

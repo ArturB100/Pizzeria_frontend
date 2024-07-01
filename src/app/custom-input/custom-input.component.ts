@@ -17,6 +17,7 @@ export class CustomInputComponent {
   @Input( {required: true} ) errorMsg!: string
   @Input( {required: true} ) name!: string
   @Input( {required: true} ) placeholder!: string
+  @Input() type: string | undefined;
 
   @Output() valueChange = new EventEmitter<string>();
 

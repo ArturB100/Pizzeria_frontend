@@ -34,7 +34,7 @@ import { Configuration }                                     from '../configurat
 })
 export class PizzaService {
 
-    protected basePath = 'http://localhost:25585';
+    protected basePath = 'http://localhost:5205';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
