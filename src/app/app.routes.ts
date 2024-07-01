@@ -7,6 +7,7 @@ import { MenuComponent } from './menu/menu.component';
 import { PizzaDetailsComponent } from './pizza-details/pizza-details.component';
 import { OrderComponent } from './order/order.component';
 import { AddPizzaComponent } from './add-pizza/add-pizza.component';
+import { AddIngredientComponent } from './add-ingredient/add-ingredient.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponentComponent},
@@ -16,5 +17,6 @@ export const routes: Routes = [
     {path: "menu", component: MenuComponent},
     {path: "pizzaDetails/:id", component: PizzaDetailsComponent},
     {path: "order", component: OrderComponent},
-    {path: "add-pizza", component: AddPizzaComponent}
+    {path: "add-pizza", component: AddPizzaComponent},
+    {path: "add-ingredient", component: AddIngredientComponent}
 ];
