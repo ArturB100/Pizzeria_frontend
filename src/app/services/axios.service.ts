@@ -10,10 +10,10 @@ import { logOut } from '../store/action';
 export class AxiosService {
 
 
-  
+
 
   public axios () {
-    const headers = localStorage.getItem('token') ? 
+    const headers = localStorage.getItem('token') ?
     {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -23,7 +23,7 @@ export class AxiosService {
       'Content-Type': 'application/json',
     }
     return axios.create({
-      baseURL: 'http://localhost:5205',
+      baseURL: 'http://localhost:25585',
       timeout: 1000,
       headers: headers
     });
@@ -33,33 +33,33 @@ export class AxiosService {
     return await this.axios().get(path)
       .then(res => this.responseFunc(res))
       .catch(err => this.errorFunc(err))
-      
+
   }
 
   public async postReq <T>(path: string, body?: {}) : Promise<T> {
     return await this.axios().post(path, body)
       .then(res => this.responseFunc(res))
       .catch(err => this.errorFunc(err))
-      
+
   }
 
   public async putReq <T>(path: string, body?: {}) : Promise<T> {
     return await this.axios().put(path, body)
       .then(res => this.responseFunc(res))
       .catch(err => this.errorFunc(err))
-      
+
   }
 
   private responseFunc (res : AxiosResponse<any, any>) {
     if (res.status === 200 || res.status === 201) {
-      return res.data 
-    } else {          
+      return res.data
+    } else {
       return null;
     }
   }
 
   private errorFunc (err : any) {
-    console.log(err);    
+    console.log(err);
     if (err.response) {
       if (err.response.status === 401) {
         localStorage.removeItem('token');

@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormsModule, NgForm} from '@angular/forms';
-import {AddPizzaRequest, PizzaService, IngredientService, Ingredient} from "../../../target";
+import { IngredientService, Ingredient} from "../../../target";
 import { CommonModule } from '@angular/common';
+import {PizzaService} from "../services/pizza.service";
+import {AddPizzaRequest} from "../types/requests";
 
 @Component({
   selector: 'app-add-pizza',
@@ -15,9 +17,13 @@ import { CommonModule } from '@angular/common';
 })
 export class AddPizzaComponent implements OnInit {
   ingredients: Ingredient[] = [];
+  image!: File;
 
   constructor(private pizzaService: PizzaService, private ingredientService: IngredientService) { }
 
+  onImageSelected(event: any): void {
+    this.image = event.target.files[0];
+  }
   ngOnInit(): void {
     this.ingredientService.ingredientGet().subscribe(
       (ingredients) => {
@@ -36,7 +42,7 @@ export class AddPizzaComponent implements OnInit {
       ingredients: value.ingredients
     };
 
-    this.pizzaService.pizzaPost(newPizza).subscribe(
+    this.pizzaService.addPizza(newPizza).then(
       (response) => {
         console.log(response);
       },
@@ -44,5 +50,14 @@ export class AddPizzaComponent implements OnInit {
         console.error(error);
       }
     );
+
+    // this.pizzaService.assignImageToPizza(this.image).then(
+    //   (response) => {
+    //     console.log(response);
+    //   },
+    //   (error) => {
+    //     console.error(error);
+    //   }
+    // );
   }
 }

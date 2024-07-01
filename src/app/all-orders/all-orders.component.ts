@@ -30,7 +30,6 @@ export class AllOrdersComponent implements OnInit {
   }
 
   updateOrderStatus(order: PizzaOrder): void {
-    // Call the orderOrderIdPut method in OrderService to update the order status on the server
     this.orderService.orderOrderIdPut(order.id, order.status).subscribe(
       () => {
         console.log('Order status updated successfully');

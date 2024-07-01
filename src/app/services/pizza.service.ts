@@ -2,11 +2,15 @@ import { Injectable } from '@angular/core';
 import { AxiosService } from './axios.service';
 import { Pizza, PizzaSizeEnum } from '../types/menu';
 import { PizzaOrder } from '../store/reducers';
+import {Observable} from "rxjs";
+import {AddPizzaRequest} from "../types/requests";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 
 const routes = {
   getPizzas: 'pizza',
-  getPizza: 'pizza'
+  getPizza: 'pizza',
+  addPizza: 'pizza'
 }
 
 @Injectable({
@@ -15,6 +19,7 @@ const routes = {
 export class PizzaService {
 
   constructor(
+    private http: HttpClient,
     private axiosService: AxiosService
   ) { }
 
@@ -55,6 +60,8 @@ export class PizzaService {
     return totalPrice
   }
 
+
+
   getPizzaSize (pizza: PizzaOrder): string {
     switch (pizza.pizzaSize) {
       case PizzaSizeEnum.BIG:
@@ -72,4 +79,17 @@ export class PizzaService {
     }
   }
 
+  addPizza(request: AddPizzaRequest): Promise<any> {
+    return this.axiosService.postReq<Pizza>(routes.addPizza, request)
+  }
+
+  assignImageToPizza(pizzaId: number, image: File | null): Promise<any> {
+    const formData = new FormData();
+
+    if (image) {
+      formData.append('image', image);
+    }
+
+    return this.http.post<any>(`http://localhost:25585/pizza/image`, formData).toPromise();
+  }
 }

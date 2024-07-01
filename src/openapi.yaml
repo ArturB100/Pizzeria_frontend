@@ -125,6 +125,16 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OperationResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OperationResult'
   /order/{orderId}:
     put:
       tags:
@@ -339,9 +349,6 @@ components:
     AddOrderRequest:
       type: object
       properties:
-        userId:
-          type: integer
-          format: int32
         addressId:
           type: integer
           format: int32
@@ -362,6 +369,10 @@ components:
           items:
             type: integer
             format: int32
+          nullable: true
+        image:
+          type: string
+          format: binary
           nullable: true
       additionalProperties: false
     Address:
