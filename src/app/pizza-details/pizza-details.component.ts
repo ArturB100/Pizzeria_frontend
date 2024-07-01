@@ -8,13 +8,15 @@ import { Order } from '../store/reducers';
 import { addPizza } from '../store/action';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { PizzaImgComponent } from '../pizza-img/pizza-img.component';
 
 @Component({
   selector: 'app-pizza-details',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    PizzaImgComponent
   ],
   templateUrl: './pizza-details.component.html',
   styleUrl: './pizza-details.component.scss'
@@ -51,7 +53,7 @@ export class PizzaDetailsComponent implements OnInit{
   }
 
   addPizzaToOrder () {
-    if (this.pizza === null || this.quantity === 0) return;
+    if (this.pizza === null || this.quantity === 0) return;    
     this.store.dispatch(addPizza({pizza: this.pizza, quantity: this.quantity, pizzaSize: this.pizzaSize}));
     this.toastr.success("Dodano do zamówienia !!");
   }

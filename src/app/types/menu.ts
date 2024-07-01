@@ -18,7 +18,7 @@ export interface Pizza {
 
 
   export enum PizzaSizeEnum{
-    SMALL, MEDIUM, BIG
+    SMALL = 0, MEDIUM =1, BIG = 2
   }
   
 

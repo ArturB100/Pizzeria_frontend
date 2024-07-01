@@ -63,20 +63,9 @@ export class PizzaService {
 
 
   getPizzaSize (pizza: PizzaOrder): string {
-    switch (pizza.pizzaSize) {
-      case PizzaSizeEnum.BIG:
-        return 'Duża';
-        break;
-      case PizzaSizeEnum.MEDIUM:
-        return 'Średnia';
-        break;
-      case PizzaSizeEnum.SMALL:
-        return 'Mała';
-        break;
-      default:
-        return 'Średnia';
-      break;
-    }
+    if (pizza.pizzaSize == 0) return 'mała'
+    if (pizza.pizzaSize == 1) return 'średnia'
+    else return 'duza'
   }
 
   addPizza(request: AddPizzaRequest): Promise<any> {
