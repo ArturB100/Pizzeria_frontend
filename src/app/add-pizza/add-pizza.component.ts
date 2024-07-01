@@ -19,6 +19,7 @@ export class AddPizzaComponent implements OnInit {
   ingredients: Ingredient[] = [];
   image!: File;
 
+
   constructor(private pizzaService: PizzaService, private ingredientService: IngredientService) { }
 
   onImageSelected(event: any): void {
@@ -45,19 +46,20 @@ export class AddPizzaComponent implements OnInit {
     this.pizzaService.addPizza(newPizza).then(
       (response) => {
         console.log(response);
+        const pizzaId = response;
+
+        this.pizzaService.assignImageToPizza(pizzaId, this.image).then(
+          (response) => {
+            console.log(response);
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
       },
       (error) => {
         console.error(error);
       }
     );
-
-    // this.pizzaService.assignImageToPizza(this.image).then(
-    //   (response) => {
-    //     console.log(response);
-    //   },
-    //   (error) => {
-    //     console.error(error);
-    //   }
-    // );
   }
 }

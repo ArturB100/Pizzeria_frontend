@@ -79,6 +79,6 @@ export class PizzaService {
       formData.append('image', image);
     }
 
-    return this.http.post<any>(`http://localhost:25585/pizza/image`, formData).toPromise();
+    return this.http.post<any>(`http://localhost:25585/pizza/assign-image-to-pizza/` + pizzaId, formData).toPromise();
   }
 }
