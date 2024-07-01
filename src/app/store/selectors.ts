@@ -15,6 +15,10 @@ export const selectIsLoggedIn = createSelector(
   (user: User) => user.loggedIn
 )
 
+export const selectUserRole = createSelector(
+  selectUser,
+  (user: User) => user.userRole
+)
 
 export const selectOrder = createFeatureSelector<Order>('order');
 export const selectPizzas = createSelector(

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import {  AxiosService } from './axios.service';
+import { AxiosService } from './axios.service';
 import { Store } from '@ngrx/store';
 import { User } from '../store/reducers';
 import { logIn, logOut } from '../store/action';
 import { NewAddressDto, RegisterReqBody as RegisterReqBody, UpdateUserDataDto, UserData, UserLoginPayload } from '../types/user';
 import { OperationResults } from '../types/common';
 import { ToastrService } from 'ngx-toastr';
+import { selectUserRole } from '../store/selectors';
 
 
 const routes = {
@@ -23,26 +24,26 @@ const routes = {
 export class UserService {
 
   constructor(
-    private axiosService : AxiosService,
-    private store: Store<{user: User}>,
+    private axiosService: AxiosService,
+    private store: Store<{ user: User }>,
   ) {
 
   }
 
-  setToken (token: string) {
+  setToken(token: string) {
     localStorage.setItem('token', token)
   }
 
-  clearToken () {
+  clearToken() {
     localStorage.removeItem('token')
   }
 
-  logOut () {
+  logOut() {
     this.clearToken();
     this.store.dispatch(logOut())
   }
 
-  async sendLogInRequest (payload : UserLoginPayload) : Promise<boolean> {
+  async sendLogInRequest(payload: UserLoginPayload): Promise<boolean> {
     let isSuccess = false;
     await this.axiosService.axios().post(routes.login, {
       email: payload.email,
@@ -50,7 +51,7 @@ export class UserService {
     }).then(res => {
       if (res.status === 200) {
         const data = res.data
-        this.store.dispatch(logIn({name: data.username}));
+        this.store.dispatch(logIn({ name: data.username, userRole: data.userRole }));
         this.setToken(data.token);
         isSuccess = true;
       }
@@ -58,27 +59,34 @@ export class UserService {
     return isSuccess;
   }
 
-  async getUserData () : Promise<UserData> {
+  async getUserData(): Promise<UserData> {
     return await this.axiosService.getReq<UserData>(routes.userData)
-      .then(data => {        
+      .then(data => {
         console.log(data);
         return data
       })
   }
 
 
-  async register (body: RegisterReqBody) {
+  async register(body: RegisterReqBody) {
     return this.axiosService.postReq<OperationResults>(routes.register, body)
-      
+
   }
 
-  async updateUserData (body: UpdateUserDataDto) {
+  async updateUserData(body: UpdateUserDataDto) {
     return this.axiosService.putReq<OperationResults>(routes.updateUserData, body);
   }
 
-  async updateUserAddress (body: NewAddressDto) {
+  async updateUserAddress(body: NewAddressDto) {
     return this.axiosService.postReq<OperationResults>(routes.updateUserAddress, body);
   }
 
+  checkIfAdmin(): boolean {
+    let isAdmin = false;
+    this.store.select(selectUserRole).subscribe(role => {
+      if (role == 1) isAdmin = true;
+    })
+    return isAdmin;
+  }
 }
 

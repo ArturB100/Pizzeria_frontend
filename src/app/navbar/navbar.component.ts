@@ -56,6 +56,10 @@ export class NavbarComponent implements OnInit{
     }
   }
 
+  checkIfAdmin () : boolean {
+    return this.userService.checkIfAdmin();
+  }
+
 
 
 

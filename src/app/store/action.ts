@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 import { Pizza, PizzaSizeEnum } from '../types/menu';
 
 
-export const logIn = createAction('[login component] logIn', props<{name: string}>());
+export const logIn = createAction('[login component] logIn', props<{name: string, userRole: number}>());
 export const logOut = createAction('[login component] logOut');
 
 

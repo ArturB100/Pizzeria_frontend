@@ -2,9 +2,11 @@
     <div class="navbar">
         <button (click)="toggleBackgroundImageVisibility()">Tło</button>
         <a routerLink="/">Strong główna</a>
-        
+
         <div *ngIf="isLoggedIn$ | async" class="loggedUserPanel">
-            <div>Witaj {{username$ | async}}</div>
+            <div *ngIf="checkIfAdmin()"><a routerLink="/add-pizza" routerLinkActive="active-link">Dodaj pizze</a></div>
+            <div *ngIf="checkIfAdmin()"><a routerLink="/add-ingredient" routerLinkActive="active-link">Dodaj składniki</a></div>
+            <!-- <div>Witaj {{username$ | async}}</div> -->
             <div><a routerLink="/userData" routerLinkActive="active-link">Moje dane</a></div>
             <div><a routerLink="/order" routerLinkActive="active-link">Zamówienie</a></div>
             <div><a routerLink="/ordersHistory" routerLinkActive="active-link">Historia zamówień</a></div>
@@ -12,12 +14,12 @@
                 <button (click)="logOut()">Wyloguj</button>
             </div>
         </div>
-    
+
         <div *ngIf="!(isLoggedIn$ | async)" class="unloggedUserPanel">
             <a routerLink="/login">Logowanie</a>
             <a routerLink="/registration">Rejestracja</a>
         </div>
-        
+
     </div>
-    
+
 </div>
