@@ -13,7 +13,6 @@ import { AddOrderDetailsRequest } from './addOrderDetailsRequest';
 
 
 export interface AddOrderRequest { 
-    userId?: number;
     addressId?: number;
     details?: Array<AddOrderDetailsRequest> | null;
 }

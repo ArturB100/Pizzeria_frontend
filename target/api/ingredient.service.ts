@@ -34,7 +34,7 @@ import { Configuration }                                     from '../configurat
 })
 export class IngredientService {
 
-    protected basePath = 'http://localhost:5205';
+    protected basePath = 'http://localhost:25585';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
