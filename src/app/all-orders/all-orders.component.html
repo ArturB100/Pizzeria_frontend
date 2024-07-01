@@ -1,0 +1,11 @@
+<div *ngFor="let order of orders">
+  <p>Id zamówienia: {{order.id}}</p>
+  <p>Status zamówienia:
+    <select [(ngModel)]="order.status" (change)="updateOrderStatus(order)">
+      <option [value]="0">W przygotowaniu</option>
+      <option [value]="1">Wysłane</option>
+      <option [value]="2">Dostarczone</option>
+    </select>
+  </p>
+  <p>Całkowita cena: {{order.totalPrice}}</p>
+</div>
