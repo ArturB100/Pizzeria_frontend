@@ -1,0 +1,13 @@
+<form #pizzaForm="ngForm" (ngSubmit)="onSubmit(pizzaForm)">
+  <div class="form-group">
+    <label for="name">Nazwa pizzy</label>
+    <input type="text" class="form-control" id="name" name="name" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="ingredients">Składniki</label>
+    <select multiple class="form-control" id="ingredients" name="ingredients" ngModel>
+      <option *ngFor="let ingredient of ingredients" [value]="ingredient.id">{{ingredient.name}}</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Dodaj pizzę</button>
+</form>

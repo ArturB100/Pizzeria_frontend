@@ -1,0 +1,19 @@
+<form [formGroup]="ingredientForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Nazwa składnika</label>
+    <input type="text" id="name" formControlName="name" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="priceForSmall">Cena dla małej pizzy</label>
+    <input type="number" id="priceForSmall" formControlName="priceForSmall" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="priceForMedium">Cena dla średniej pizzy</label>
+    <input type="number" id="priceForMedium" formControlName="priceForMedium" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="priceForBig">Cena dla dużej pizzy</label>
+    <input type="number" id="priceForBig" formControlName="priceForBig" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Dodaj składnik</button>
+</form>
