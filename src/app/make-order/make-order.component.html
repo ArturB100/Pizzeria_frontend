@@ -1,0 +1,56 @@
+<div class="outer-container">
+    <h1>Dane zamówienia</h1>
+    <table>
+
+        <tr>
+            <td>Imię</td>
+            <td>{{userData?.firstName}}</td>
+        </tr>
+
+        <tr>
+            <td>Nazwisko</td>
+            <td>{{userData?.lastName}}</td>
+        </tr>
+
+        <tr>
+            <td>Email</td>
+            <td>{{userData?.email}}</td>
+        </tr>
+
+        <tr>
+            <td>Telefon</td>
+            <td>{{userData?.phone}}</td>
+        </tr>
+
+        <tr>
+            <td>miasto:</td>
+            <td>{{userData?.address?.city}}</td>
+        </tr>
+
+        <tr>
+            <td>kod pocztowy: </td>
+            <td>{{userData?.address?.zipcode}}</td>
+        </tr>
+        <tr>
+            <td>miasto: </td>
+            <td>{{userData?.address?.firstLine}}</td>
+        </tr>
+        <tr>
+            <td>miasto: </td>
+            <td>{{userData?.address?.secondLine}}</td>
+        </tr>
+
+        <tr>
+            <td>Całkowita kwota zamówienia: </td>
+            <td>{{pizzaService.getTotalPriceOfWholeOrder((pizzas$ | async)!)}} zł</td>
+        </tr>
+    </table>
+
+
+
+
+
+    <form (ngSubmit)="onSubmit()">
+        <button class="btn btn-success">Potwierdź i złóż zamówienie</button>
+    </form>
+</div>

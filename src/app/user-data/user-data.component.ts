@@ -5,6 +5,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CustomInputComponent } from '../custom-input/custom-input.component';
 import { ToastrService } from 'ngx-toastr';
+import { User } from '../store/reducers';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectIsLoggedIn } from '../store/selectors';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-data',
@@ -20,13 +25,22 @@ import { ToastrService } from 'ngx-toastr';
 export class UserDataComponent implements OnInit{
 
   public userData : UserData | null = null;
+  isLoggedIn$: Observable<boolean>
 
   constructor (
     private userService : UserService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private store: Store<{user: User}>,
+    private router: Router
   ) {
-
-  }
+    this.isLoggedIn$ = this.store.select(selectIsLoggedIn);
+    this.isLoggedIn$.subscribe(isLoggedIn => {
+      if (!isLoggedIn) {
+        toastr.info("Musisz się zalogować");
+        this.router.navigate(['/login'])
+      }
+    })
+  } 
 
 
   async getUserData () {
@@ -65,7 +79,7 @@ export class UserDataComponent implements OnInit{
       .then (data => {
         if (data) {
           this.toastr.success("Zauktualizowano");
-        }
+        } else this.toastr.error("Coś poszło nie tak");
       })
   }
 

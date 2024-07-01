@@ -6,6 +6,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { MenuComponent } from './menu/menu.component';
 import { PizzaDetailsComponent } from './pizza-details/pizza-details.component';
 import { OrderComponent } from './order/order.component';
+import { MakeOrderComponent } from './make-order/make-order.component';
+import { OrdersHistoryComponent } from './orders-history/orders-history.component';
 
 
 export const routes: Routes = [
@@ -16,4 +18,6 @@ export const routes: Routes = [
     {path: "menu", component: MenuComponent},
     {path: "pizzaDetails/:id", component: PizzaDetailsComponent},
     {path: "order", component: OrderComponent},
+    {path: "makeOrder", component: MakeOrderComponent},
+    {path: "ordersHistory", component: OrdersHistoryComponent},
 ];

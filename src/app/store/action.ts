@@ -10,3 +10,5 @@ export const logOut = createAction('[login component] logOut');
 export const addPizza = createAction('[menu component] addItem', props<{pizza: Pizza, quantity: number, pizzaSize: PizzaSizeEnum}>());
 export const deletePizza = createAction('[menu component] deleteItem', props<{id: number}>());
 export const deleteAllPizzas = createAction('[menu component] deleteAllItems');
+export const subQuantity = createAction('[order component] subOne', props<{id: number}>());
+export const addQuantity = createAction('[order component] addOne', props<{id: number}>());

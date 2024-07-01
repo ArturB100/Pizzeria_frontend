@@ -15,6 +15,9 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
 
 const metaReducers: MetaReducer<any>[] = [localStorageSyncReducer];
 
+export const AppSettings = {
+  API_path: 'localhost:5205'
+}
 
 export const appConfig: ApplicationConfig = {
   providers: [

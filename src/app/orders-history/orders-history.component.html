@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <div *ngFor="let order of allOrders" class="card mb-4">
+      <div class="card-header">
+        <h5>Order #{{order.id}}</h5>
+        <p>User: {{order.user.firstName}} {{order.user.lastName}}</p>
+        <p>Email: {{order.user.email}}</p>
+        <p>Phone: {{order.user.phone}}</p>
+      </div>
+      <div class="card-body">
+        <h6>Delivery Address:</h6>
+        <p>{{order.address.firstLine}}, {{order.address.secondLine}}, {{order.address.city}}, {{order.address.zipcode}}</p>
+        <h6>Order Details:</h6>
+        <ul class="list-group">
+          <li *ngFor="let detail of order.orderDetails" class="list-group-item">
+            <h6>Pizza: {{detail.pizza.name}}</h6>
+            <p>Quantity: {{detail.quantity}}</p>
+            <p>Size: {{detail.size}}</p>
+            <h6>Ingredients:</h6>
+            <ul>
+              <li *ngFor="let ingredient of detail.pizza.ingredients">
+                {{ingredient.name}} - Small: ${{ingredient.priceForSmall}}, Medium: ${{ingredient.priceForMedium}}, Large: ${{ingredient.priceForBig}}
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <h6>Total Price: {{order.totalPrice}} zł</h6>
+        <p>Status: {{orderService.getStatus(order.status)}}</p>
+      </div>
+      <div class="line"></div>
+    </div>
+  </div>
+  

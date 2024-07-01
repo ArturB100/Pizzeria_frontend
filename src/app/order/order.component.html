@@ -1,15 +1,43 @@
-<div *ngFor="let pizza of (pizzas$ | async)">
-    <div>
-        <app-pizza-list-item [pizza]="pizza.pizza">
+<table *ngFor="let pizza of (pizzas$ | async)" class="pizzas-container">
+    <thead>
+        <tr>
+            <th>nazwa</th>
+            <th>obraz</th>
+            <th>rozmiar</th>
+            <th>cena za sztukę</th>
+            <th>ilość</th>
+            <th>całkowita cena</th>
+            <th>Akcje</th>
+        </tr>
 
-        </app-pizza-list-item>
-        <div>ilość {{pizza.quantity}}</div>    
-    </div>
-</div>
+
+    </thead>
+    <tbody>
+        <tr class="pizza-container">
+            <td>{{pizza.pizza.name}}</td>
+            <td><app-pizza-img [id]="pizza.pizza.id" class="pizza-img"></app-pizza-img></td>
+            <td>{{pizzaService.getPizzaSize(pizza)}}</td>
+            <td>{{pizzaService.getPrice(pizza)}}</td>
+            <td>ilość {{pizza.quantity}}</td>
+            <td>{{pizzaService.getTotalPrice(pizza)}}</td>
+            <td>
+                <button (click)="subQuantity(pizza)">-</button>
+                <button (click)="addQuantity(pizza)">+</button>
+                <button (click)="deletePizza(pizza)">usuń</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 <button (click)="clearAllItemsFromOrder()">
     Wyszyść całą listę
 </button>
+
+<div class="actionButtons">
+    <a *ngIf="!doesUserHasAddress" routerLink="/userData">Dodaj adres</a>
+    <a *ngIf="checkIfCanBeOrdered()" routerLink="/makeOrder">Złóż zamówienie</a>    
+</div>
+
 
 <div *ngIf="(pizzas$ | async)?.length == 0">
     Nie masz nic w zamówieniu
