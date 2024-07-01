@@ -1,6 +1,6 @@
 <div>
     <form (ngSubmit)="onSubmit()">
-
+        <h1>Rejestracja</h1>
         <app-custom-input 
             [errorMsg]="formErrors.email" 
             name="email"
@@ -50,6 +50,6 @@
             (valueChange)="onPasswordConfirmChange($event)"
         ></app-custom-input>
 
-        <button type="submit">Zarejestruj</button>
+        <button type="submit" class="btn btn-success">Zarejestruj</button>
     </form>
 </div>

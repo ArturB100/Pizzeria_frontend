@@ -1,5 +1,51 @@
 <h1>{{pizza?.name}}</h1>
 
 
-<input [(ngModel)]="quantity" type="number" />
-<button (click)="addPizzaToOrder()" class="btn btn-success">Dodaj do zamówienia</button>
+<div class="buttons-container">
+    <label class="form-label" for="quantity">Ilość</label>
+    <input [(ngModel)]="quantity" type="number" name="quantity"/>
+    <select [(ngModel)]="pizzaSize">
+        <option value="0">Mała</option>
+        <option value="1">Średnia</option>
+        <option value="2">Duża</option>
+    </select>
+    <button (click)="addPizzaToOrder()" class="btn btn-success">Dodaj do zamówienia</button>
+
+</div>
+
+
+
+<app-pizza-img [id]="pizza!.id" class="pizza-img"></app-pizza-img>
+
+<div class="container mt-4">
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5>Szczegóły pizzy</h5>
+        </div>
+        <div class="card-body">
+            <h6>nazwa: {{ pizza?.name }}</h6>
+            <!-- <p>Created By User: {{ pizza?.createdByUser ? 'Yes' : 'No' }}</p> -->
+            <h6>Składniki:</h6>
+            <ul class="list-group mb-3">
+                <li *ngFor="let ingredient of pizza?.ingredients" class="list-group-item">
+                    {{ ingredient.name }} -
+                    mała: {{ ingredient.priceForSmall }}zł,
+                    średnia: {{ ingredient.priceForMedium }}zł,
+                    Duża: {{ ingredient.priceForBig }}zł
+                </li>
+            </ul>
+            <h6>cena:</h6>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    mała: {{ pizza?.totalPriceForSmall }}zł
+                </li>
+                <li class="list-group-item">
+                    średnia: {{ pizza?.totalPriceForMedium }}zł
+                </li>
+                <li class="list-group-item">
+                    Duża: {{ pizza?.totalPriceForBig }}zł
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
