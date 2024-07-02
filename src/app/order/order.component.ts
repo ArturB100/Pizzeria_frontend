@@ -56,15 +56,15 @@ export class OrderComponent implements OnInit{
   }
 
   subQuantity (pizza: PizzaOrder) {
-    this.store.dispatch(subQuantity({id: pizza.pizza.id}))
+    this.store.dispatch(subQuantity({id: pizza.pizza.id, pizzaSize: pizza.pizzaSize}))
   }
 
   addQuantity (pizza: PizzaOrder) {
-    this.store.dispatch(addQuantity({id: pizza.pizza.id}))
+    this.store.dispatch(addQuantity({id: pizza.pizza.id,  pizzaSize: pizza.pizzaSize}))
   }
 
   deletePizza (pizza: PizzaOrder) {
-    this.store.dispatch(deletePizza({id:  pizza.pizza.id}))
+    this.store.dispatch(deletePizza({id:  pizza.pizza.id,  pizzaSize: pizza.pizzaSize}))
   }
 
   checkIfCanBeOrdered () : boolean {

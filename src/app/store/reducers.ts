@@ -50,7 +50,7 @@ export const _orderReducer = createReducer(
     on(addPizza, (state, {pizza, quantity, pizzaSize}) => {
         let isPizzaAlreadyInOrder = false;
         state.pizzas.forEach(p => {
-            if (p.pizza.id == pizza.id)
+            if (p.pizza.id == pizza.id && p.pizzaSize == pizzaSize)
                 isPizzaAlreadyInOrder = true;
         })
         if (isPizzaAlreadyInOrder) {
@@ -63,12 +63,12 @@ export const _orderReducer = createReducer(
         oldPizzas.push(pizzaToAdd);
         return {...state, pizzas: oldPizzas};
     }),
-    on(deletePizza, (state, {id}) => ({...state, pizzas: state.pizzas.filter(p => p.pizza.id !== id)})),
+    on(deletePizza, (state, {id, pizzaSize}) => ({...state, pizzas: state.pizzas.filter(p => p.pizza.id !== id || p.pizzaSize !== pizzaSize)})),
     on(deleteAllPizzas, (state) => ({pizzas: []})),
-    on(subQuantity, (state, {id}) => {
+    on(subQuantity, (state, {id, pizzaSize}) => {
         const newPizzas = state.pizzas.map(p => p);        
         for (let i=0 ; i<newPizzas.length; i++) {
-            if (newPizzas[i].pizza.id == id) {
+            if (newPizzas[i].pizza.id == id && newPizzas[i].pizzaSize == pizzaSize) {
                 newPizzas[i] = {pizza: newPizzas[i].pizza, pizzaSize: newPizzas[i].pizzaSize, quantity: newPizzas[i].quantity - 1}
                 if (newPizzas[i].quantity <= 0) {
                     newPizzas.splice(i, 1);
@@ -78,10 +78,10 @@ export const _orderReducer = createReducer(
         }
         return {...state, pizzas: newPizzas};
     }),
-    on(addQuantity, (state, {id}) => {
+    on(addQuantity, (state, {id, pizzaSize}) => {
         const newPizzas = state.pizzas.map(p => p);        
         for (let i=0 ; i<newPizzas.length; i++) {
-            if (newPizzas[i].pizza.id == id) {
+            if (newPizzas[i].pizza.id == id && newPizzas[i].pizzaSize == pizzaSize) {
                 newPizzas[i] = {pizza: newPizzas[i].pizza, pizzaSize: newPizzas[i].pizzaSize, quantity: newPizzas[i].quantity + 1}
             }
         }
